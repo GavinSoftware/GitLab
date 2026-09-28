@@ -1,0 +1,8 @@
+#!/bin/bash
+# Name: Gavin lai
+# Date: September 17, 2026
+
+X="$PWD"
+cd "$1" || exit
+rm ./*.tmp
+cd "$X"	
