@@ -1,0 +1,17 @@
+#!/bin/bash
+# Gavin Lai, September 22, 2026
+
+if [[ $# -ne 2 ]]
+then
+    echo "Usage: ./compare WORD1 WORD2" >&2
+    exit 1
+elif [[ "$1" < "$2" ]]
+then
+    printf '%s\n' "$1"
+elif [[ "$1" > "$2" ]]
+then
+    printf '%s\n' "$2"
+else
+    echo "Error: the two arguments are the same." >&2
+    exit 1
+fi

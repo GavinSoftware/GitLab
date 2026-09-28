@@ -1,0 +1,20 @@
+DATA=~/2XC3-data/gutenberg
+export LC_ALL=C.UTF-8
+
+# 1. Unique English words, sorted!
+cat "$DATA"/english/*.txt | ./splt | sort | uniq
+
+# 2. Number of unique English words
+cat "$DATA"/english/*.txt | ./splt | sort | uniq | wc -l
+
+# 3. Saving the lexicon while still giving the number of UNIQUE words
+cat "$DATA"/english/*.txt | ./splt | sort | uniq | tee lexicon.txt | wc -l
+
+# 4. First word in the lexicon
+cat "$DATA"/english/*.txt | ./splt | sort | uniq | head -n 1
+
+# 5. Last word in the lexicon
+cat "$DATA"/english/*.txt | ./splt | sort | uniq | tail -n 1
+
+# 6. The 9998th entry in the lexicon !
+cat "$DATA"/english/*.txt | ./splt | sort | uniq | head -n 9998 | tail -n 1

@@ -1,0 +1,21 @@
+Exercise 3.2.2
+
+a)
+The script runs the command supplied in its first argument. Since $1 is
+unquoted inside the script, a command string is split into separate words.
+
+Command:
+./di "ls -l"
+
+The quotes pass ls -l as one argument to di. Inside the script, $1 expands
+to ls -l, so ls runs with the -l option. Using ./di ls -l would only run ls,
+because the script uses $1 and ignores $2.
+
+b)
+My initial prediction: A will end up storing a, while B stores a 1, from there I'm not entirely sure
+
+Actual output:
+a 1 a1C 1*10
+
+Explanation:
+A stores a and B stores 1, for C="$A${B}C" joins a, 1, and the final C to form a1C. Then D=$B*10 stores the text 1*10. This doesn't perform multiplication. The double quotes in echo keep the * as part of the output. If the prediction was a 1 a1C 10, the difference is that D is a string expression rather than an arithmetic calculation.

@@ -1,0 +1,19 @@
+DATA=~/2XC3-data/gutenberg
+export LC_ALL=C.UTF-8
+
+# wc -lwm gives line, word, and character counts, including accented letters.
+
+# 1. Avg word length in one Spanish document
+cat "$DATA"/spanish/los_favores_del_mundo.txt | ./splt | wc -lwm | ./wstat
+
+# 2. Avg word length across ALL Spanish documents
+cat "$DATA"/spanish/*.txt | ./splt | wc -lwm | ./wstat
+
+# 3. Avg length of the first 100 words in the combined Spanish documents
+cat "$DATA"/spanish/*.txt | ./splt | head -n 100 | wc -lwm | ./wstat
+
+# 4. Avg length of the last 100 words in the combined Spanish documents
+cat "$DATA"/spanish/*.txt | ./splt | tail -n 100 | wc -lwm | ./wstat
+
+# 5. Avg length of the UNIQUE words across ALL Spanish documents
+cat "$DATA"/spanish/*.txt | ./splt | sort | uniq | wc -lwm | ./wstat

@@ -1,0 +1,21 @@
+#!/bin/bash
+# Gavin Lai, September 22, 2026
+
+if [[ $# -eq 0 ]]
+then
+    echo "Usage: ./filetypes PATH..." >&2
+    exit 1
+fi
+
+for item in "$@"
+do
+    if [[ -d "$item" ]]
+    then
+        echo "directory: $item"
+    elif [[ -f "$item" ]]
+    then
+        echo "file:      $item"
+    else
+        echo "unknown:   $item"
+    fi
+done

@@ -1,0 +1,19 @@
+#!/bin/bash
+# Gavin Lai, September 22, 2026
+
+if [[ $# -ne 0 ]]
+then
+    echo "Usage: ./bashsplt < input.txt" >&2
+    exit 1
+fi
+
+set -f
+IFS=$' \t\n\r\v\f'
+
+while read -r line || [[ -n "$line" ]]
+do
+    for word in $line
+    do
+        printf '%s\n' "$word"
+    done
+done

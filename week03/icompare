@@ -1,0 +1,17 @@
+#!/bin/bash
+# Gavin Lai, September 22, 2026
+
+if [[ $# -ne 2 ]]
+then
+    echo "Usage: ./icompare INTEGER1 INTEGER2" >&2
+    exit 1
+elif [ "$1" -lt "$2" ]
+then
+    echo "$1"
+elif [ "$1" -gt "$2" ]
+then
+    echo "$2"
+else
+    echo "Error! Enter 2 different integers." >&2
+    exit 1
+fi
